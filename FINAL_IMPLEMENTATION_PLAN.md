@@ -43,12 +43,12 @@ A single Spring Boot application that:
 ## Phased Delivery
 
 ```
-Phase 1 — Codebase surgery          delete dead code, wire JIRA client
-Phase 2 — Live JIRA data layer      fetch real sprints and issues
-Phase 3 — Metrics and AI analysis   health, predictions, risks, recommendations
-Phase 4 — React frontend and CLI    dashboard and command-line tools
-Phase 5 — DevOps pipeline           Docker, Kubernetes, Jenkins
-Phase 6 — Documentation and demo    SRS, SDS, UML, demo script, report
+✅ Phase 1 — Codebase surgery          delete dead code, wire JIRA client
+✅ Phase 2 — Live JIRA data layer      fetch real sprints and issues
+✅ Phase 3 — Metrics and AI analysis   health, predictions, risks, recommendations
+   Phase 4 — React frontend and CLI    dashboard and command-line tools
+   Phase 5 — DevOps pipeline           Docker, Kubernetes, Jenkins
+   Phase 6 — Documentation and demo    SRS, SDS, UML, demo script, report
 ```
 
 Each phase ends with a working, demo-able increment that builds with
@@ -56,7 +56,7 @@ Each phase ends with a working, demo-able increment that builds with
 
 ---
 
-# PHASE 1 — Codebase Surgery
+# ✅ PHASE 1 — Codebase Surgery
 
 **Owner:** Teammate 1
 **Duration:** 2–3 days
@@ -536,18 +536,18 @@ Add to `.gitignore`:
 *.env
 ```
 
-## 1.11 Phase 1 Done Criteria
+## 1.11 Phase 1 Done Criteria ✅
 
-- `mvn clean test` exits 0.
-- `SprintAssistantApplicationTests.contextLoads` passes.
-- Zero references to `CsvDataLoader`, `LoadResult`, `DataSourceProperties`,
+- ✅ `mvn clean test` exits 0.
+- ✅ `SprintAssistantApplicationTests.contextLoads` passes.
+- ✅ Zero references to `CsvDataLoader`, `LoadResult`, `DataSourceProperties`,
   `DatasetConfiguration`, or any CSV fixture remain in production code.
-- `GET /api/v1/health` returns `{"status":"UP","phase":"1-stub"}`.
-- No Spring XD CSV or derived row is present anywhere in the repository.
+- ✅ `GET /api/v1/health` returns `{"status":"UP","phase":"1-stub"}`.
+- ✅ No Spring XD CSV or derived row is present anywhere in the repository.
 
 ---
 
-# PHASE 2 — Live JIRA Data Layer
+# ✅ PHASE 2 — Live JIRA Data Layer
 
 **Owner:** Teammate 1
 **Duration:** 4–5 days
@@ -1128,18 +1128,18 @@ Test:
 - `sprintId`/`sprintName` from `customfield_10020` last array element.
 - Null-safe for every optional field (no NPE on minimal JSON).
 
-## 2.9 Phase 2 Done Criteria
+## 2.9 Phase 2 Done Criteria ✅
 
-- `mvn clean test` exits 0 with all WireMock tests passing.
-- `GET /api/v1/sprints` returns a JSON array.
-- `GET /api/v1/sprints/active` returns the active sprint with issues.
-- `GET /api/v1/sprints/{id}` returns 404 for an unknown sprint.
-- `POST /api/v1/sprints/refresh` returns 204.
-- Swagger UI at `/swagger-ui.html` lists all endpoints.
+- ✅ `mvn clean test` exits 0 with all WireMock tests passing.
+- ✅ `GET /api/v1/sprints` returns a JSON array.
+- ✅ `GET /api/v1/sprints/active` returns the active sprint with issues.
+- ✅ `GET /api/v1/sprints/{id}` returns 404 for an unknown sprint.
+- ✅ `POST /api/v1/sprints/refresh` returns 204.
+- ✅ Swagger UI at `/swagger-ui.html` lists all endpoints.
 
 ---
 
-# PHASE 3 — Metrics and AI Analysis
+# ✅ PHASE 3 — Metrics and AI Analysis
 
 **Owner:** Teammate 2
 **Duration:** 4–5 days
@@ -1489,15 +1489,15 @@ Cover: high probability when sprint is ahead. Low probability when mostly blocke
 Risk HIGH for blocked+unassigned. Risk LOW for small assigned in-progress issue.
 Recommendations only for unassigned issues. `daysRemaining = 0` when end date is past.
 
-## 3.5 Phase 3 Done Criteria
+## 3.5 Phase 3 Done Criteria ✅
 
-- `mvn clean test` exits 0.
-- All eight endpoints return correct data.
-- `/health` returns `HEALTHY`, `WATCH`, or `AT_RISK` with an explanation string.
-- `/prediction` returns probability between 0.05 and 0.98.
-- `/risks` returns issues sorted by risk score descending.
-- `/recommendations` returns only unassigned, non-Done issues.
-- Swagger lists all eight endpoints with descriptions.
+- ✅ `mvn clean test` exits 0.
+- ✅ All eight endpoints return correct data.
+- ✅ `/health` returns `HEALTHY`, `WATCH`, or `AT_RISK` with an explanation string.
+- ✅ `/prediction` returns probability between 0.05 and 0.98.
+- ✅ `/risks` returns issues sorted by risk score descending.
+- ✅ `/recommendations` returns only unassigned, non-Done issues.
+- ✅ Swagger lists all eight endpoints with descriptions.
 
 ---
 
@@ -2232,14 +2232,14 @@ src/test/java/com/ablmvp/sprintassistant/
 
 # Team Work Allocation
 
-| Phase | Owner | Key Deliverables |
-|-------|-------|-----------------|
-| 1 — Cleanup | Teammate 1 | Delete CSV layer, add JiraProperties, rewrite domain models, app compiles |
-| 2 — JIRA data | Teammate 1 | JiraAgileApiClient, JiraDataService, mappers, WireMock tests, all 6 base endpoints live |
-| 3 — Metrics/AI | Teammate 2 | SprintMetricsService, SprintAIAnalyzer, 3 AI endpoints, unit tests |
-| 4 — Frontend/CLI | Teammate 3 | React dashboard (3 pages), API client, SprintCliRunner, Maven frontend build |
-| 5 — DevOps | Teammate 4 | Dockerfile, Kubernetes manifests, Jenkinsfile, deploy-local.sh |
-| 6 — Docs/Demo | Teammate 4 (all) | README, SRS, SDS, UML, demo script, test evidence, contribution log |
+| Phase | Owner | Key Deliverables | Status |
+|-------|-------|-----------------|--------|
+| 1 — Cleanup | Teammate 1 | Delete CSV layer, add JiraProperties, rewrite domain models, app compiles | ✅ Done |
+| 2 — JIRA data | Teammate 1 | JiraAgileApiClient, JiraDataService, mappers, WireMock tests, all 6 base endpoints live | ✅ Done |
+| 3 — Metrics/AI | Teammate 2 | SprintMetricsService, SprintAIAnalyzer, 3 AI endpoints, unit tests | ✅ Done |
+| 4 — Frontend/CLI | Teammate 3 | React dashboard (3 pages), API client, SprintCliRunner, Maven frontend build | ⬜ Pending |
+| 5 — DevOps | Teammate 4 | Dockerfile, Kubernetes manifests, Jenkinsfile, deploy-local.sh | ⬜ Pending |
+| 6 — Docs/Demo | Teammate 4 (all) | README, SRS, SDS, UML, demo script, test evidence, contribution log | ⬜ Pending |
 
 ---
 
